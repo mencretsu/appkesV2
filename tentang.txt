@@ -1,0 +1,23 @@
+Kalkulator Kesehatan (Beta).
+
+Aplikasi ini dibuat untuk memudahkan kita mengukur seberapa sehat tubuh kita saat ini.
+tentu saja dengan aplikasi kita dapat menghitung asupan makanan yang masuk ke tubuh kita
+mulai dari tinggi lemak, tinggi protein dll. sehingga total AKG(Angka Kecukupan Gizi) dapat 
+dipertimbangkan dengan baik. dan (Qlistwidget ini hanya bersifat candaan semata karena yg serius hanyalah cintaku padamu :v)
+kami membuatnya untuk mengetes saja dan tidak mengambil sumber yang jelas nan valid.
+jika ada kekurangan dalam pendeskripsian semua ini, tolong jangan pukul kami.
+
+Terima kasih ~
+
+
+
+
+
+
+Powered by TI20A
+#f2p btw
+
+-Faiz Abdullah 
+-Mulki Qolbuna 
+-Ricardo Cristian
+-Yosep Oktavianus 
