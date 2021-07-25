@@ -1,2 +1,5 @@
 # appkesV2
-Yo
+Aplikasi (berfaedah) Kalkulator Kesehatan.
+
+coder by:
+20SA3115
