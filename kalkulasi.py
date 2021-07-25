@@ -52,17 +52,19 @@ class Kalkulasi(QWidget):
         self.rightlayout.setSpacing(10)
         self.setLayout(self.mlayout)
     def mdesign(self):
+        borderstyle=("border-style:outset; border-width: 1.2px;border-radius: 10px;border-color: green;padding: 4px;")
         self.title=QLabel("kalkulasi")
         self.title.setStyleSheet('color: green;font-size: 18pt;font-family:Lucida Sans')
         self.setStyleSheet("font-size:11pt; font-family:Lucida Sans; font-style:Bold; color:green;")
         self.lblnama=QLabel("Nama depan")
         self.nameentry=QLineEdit()
         self.lblnamabelakang=QLabel("Nama belakang")
-        self.lblnamabelakangentry=QLineEdit()
+        self.lblnamabelakangentry=QLineEdit() 
         self.tb=QLabel("Tinggi badan")
         self.bb=QLabel("Berat badan")
         self.foto=QLabel("Tambah foto")
         self.fotoentry=QPushButton("browse")
+        self.fotoentry.setStyleSheet(borderstyle)
         self.fotoentry.clicked.connect(self.tambahfoto)
         self.fotoentrylbl=QLabel()
         #TINGGI BADAN
@@ -83,11 +85,15 @@ class Kalkulasi(QWidget):
         self.qmbbox.addItems(["Info detail skor","18.4 <= berat badan kurang","24.9 <= ideal","29.9 <= kelebihan berat badan","34.9 <= obesitas","39,9 <= hyper obesitas"])
         
         self.btneks=QPushButton("simpan")
+        self.btneks.setStyleSheet(borderstyle)
+
         self.btneks.clicked.connect(self.hasil)
         self.btnback=QPushButton("kembali")
+        self.btnback.setStyleSheet(borderstyle)
         self.btnback.clicked.connect(self.close)
 
         self.listtampil=QListWidget()
+        self.listtampil.setStyleSheet(borderstyle)
 
     def labelslid(self):
         self.a = str(self.slid.value())
@@ -96,32 +102,34 @@ class Kalkulasi(QWidget):
         self.b = str(self.slid2.value())
         self.label2.setText(self.b)
     def hasil(self):
+        global defaultImage
         self.listtampil.clear()
         self.listtampil.setWordWrap(True)
         #global defaultImage # how to cara nampilin foto langsung dari hasil eksekusi tanpa database?
         img =QLabel()
-        img.setPixmap(QPixmap("images/"))
+        img.setPixmap(QPixmap("images/icon.png"))
         img.setAlignment(Qt.AlignCenter)
 
         itemsu=QListWidgetItem()
         size = QSize(90,90)
         itemsu.setSizeHint(size)
-        self.listtampil.addItem(itemsu)
-        self.listtampil.setItemWidget(itemsu, img)
-        self.listtampil.addItem(itemsu)
 
         a = self.nameentry.text()
         b = self.lblnamabelakangentry.text()
-        self.listtampil.addItem("Nama depan : "+a)
-        self.listtampil.addItem("Nama belakang : "+b)
         z = self.label2.text()
         w = self.label.text()
+
         if (z and w!=""):
             try:
+                self.listtampil.addItem(itemsu)
+                self.listtampil.setItemWidget(itemsu, img)
+                self.listtampil.addItem(itemsu)
+                self.listtampil.addItem("Nama depan      : "+a)
+                self.listtampil.addItem("Nama belakang  : "+b)
                 self.z = int(self.label2.text())
                 self.w = int(self.label.text())
                 self.oke =self.z/((self.w/100)**2)
-                self.output="Skor anda : "+str(self.oke)+"\n"
+                self.output="Skor anda : "+str(self.oke)+"\n\n"+"Keterangan : "
                 if self.oke <= 18.4:
                     self.listtampil.addItem(self.output+"anda gizi buruk")
                 elif self.oke <= 24.9:
@@ -135,9 +143,9 @@ class Kalkulasi(QWidget):
                 else:
                     self.listtampil.addItem(self.output+ "anda tidak pernah berhenti makan 1 detik pun")
             except:
-                QMessageBox.information(self, "Perhatian","Data tidak dapat tersimpan","\n","isi data dengan benar")
+                QMessageBox.information(self, "Perhatian","Data tidak dapat tersimpan")
         else:
-            QMessageBox.warning(self, "Perhatian!","Jalankan dengan benar")
+            QMessageBox.warning(self, "Perhatian!","Isi data dengan benar")
     def tambahfoto(self):
         global defaultImage
         self.size=(90,90)
