@@ -32,7 +32,6 @@ class Main(QWidget):
         palette = QPalette()
         palette.setBrush(QPalette.Window, QBrush(oImage))
         borderstyle=("border-style:outset; border-width: 1.2px;border-radius: 10px;border-color: green;padding: 4px;")
-        btnhover=("QPushButton::hover""{""background-color: lightgreen;""}")
         self.setPalette(palette)
         self.setStyleSheet("font-size:11pt; font-family:Lucida Sans; font-style:Bold; color:green;")
         self.title=QLabel("HOME")
@@ -46,15 +45,16 @@ class Main(QWidget):
         self.employelist.itemClicked.connect(self.singleclick)
         self.cek=QCheckBox("pilih semua")
         self.btn = QPushButton("Menu Kalkulasi")
+        self.btn.setStyleSheet(borderstyle)
         self.btnnew=QPushButton("NEW")
         self.btnupdate=QPushButton("UPDATE")
         self.btndel=QPushButton("DELETE")
         self.btndel.setStyleSheet(borderstyle)
         self.btnnew.setStyleSheet(borderstyle)
         self.btnupdate.setStyleSheet(borderstyle)
-        self.btnset=QPushButton("Pengaturan")
-        self.btnset.setStyleSheet("border-radius:50;")
-        self.btnset.setIcon(QIcon("images/menuicon.png"))
+        self.btnset=QPushButton("HOME")
+        self.btnset.setStyleSheet(borderstyle)
+        self.btnset.setIcon(QIcon("images/homeicon.png"))
         self.btnset.clicked.connect(self.set)
         self.btnnew.clicked.connect(self.addEmployee)
         self.btndel.clicked.connect(self.delemployee)
@@ -64,7 +64,6 @@ class Main(QWidget):
         self.mlayout=QVBoxLayout()
         self.toplayout=QHBoxLayout()
         self.bottomlayout=QVBoxLayout()###
-        self.lefttoplayout=QVBoxLayout()
         self.midlayot=QFormLayout()
         self.bottomlayout1=QVBoxLayout()
         self.bottomlayout2=QHBoxLayout()
@@ -79,9 +78,7 @@ class Main(QWidget):
         self.bottomlayout.addLayout(self.bottomlayout2)
         self.bottomlayout.addLayout(self.bottomlayout3)
         #3######
-        self.lefttoplayout.addWidget(self.btnset)
-        self.toplayout.addWidget(self.icon)
-        self.toplayout.addWidget(self.title)
+        self.toplayout.addWidget(self.btnset)
         self.toplayout.addStretch()
         self.toplayout.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
         self.title.setStyleSheet('color: green;font-size:12pt;font-family:Lucida Sans')
@@ -101,23 +98,7 @@ class Main(QWidget):
         self.bottomlayout3.addWidget(self.btnupdate)
         self.bottomlayout3.addWidget(self.btndel)
         self.setLayout(self.mlayout)
-    ''''def displayfirst(self):
-        query = " SELECT * FROM skuyisi ORDER BY ROWID ASC LIMIT 1"
-        employee = cur.execute(query).fetchone()
-        img =QLabel()
-        img.setPixmap(QPixmap("images/kentank.png"+employee[5]))
-        name = employee[1]
-        nmbelakang=employee[2]
-        ukuran = employee[3]
-        jumlah = employee[4]
-        infoo = employee[6]
-        
-        self.listtampil.addItem(name)
-        self.listtampil.addItem(nmbelakang)
-        self.listtampil.addItem(ukuran)
-        self.listtampil.addItem(jumlah)
-        self.listtampil.addItem(infoo)
-#        self.listtampil.addItem(img)'''
+   
     def val(self):pass
     
     def singleclick(self):
