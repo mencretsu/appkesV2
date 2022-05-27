@@ -1,2 +1,1 @@
-PyQT5
-PIL
+PyQt5-Qt5>=5.15
